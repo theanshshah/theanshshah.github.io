@@ -11,6 +11,41 @@
 <body>
     <!--Coming Soon-->
     <div class="hero">
+        <!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript 12-Hour Clock</title>
+    <style>
+      #clock {
+        font-size: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <script>
+      function updateTime() {
+        const now = new Date();
+        let hours = now.getHours();
+        let meridiem = "AM";
+        if (hours > 12) {
+          hours -= 12;
+          meridiem = "PM";
+        } else if (hours === 0) {
+          hours = 12;
+        }
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const timeString = `${hours}:${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds} ${meridiem}`;
+        document.getElementById("clock").innerHTML = timeString;
+      }
+
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
+
         <h1><strong>Coming in NOWHILE</strong></h1>
         <p>Ansh Shah</p>
         <form action="#" method="post">
