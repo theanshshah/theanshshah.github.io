@@ -23,6 +23,33 @@
             <a href="https://github.com/theanshshah/" target="_blank"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
-    <footer><tt><p>© 2023 | All rights reserved &reg <br></tt></p></footer>
+    <footer><tt><p>© 2023 | All rights reserved &reg | <!DOCTYPE html>
+<html>
+  <head>
+  <tt>
+    <style>
+      #clock {
+        font-size: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <script>
+      function updateTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        document.getElementById("clock").innerHTML = timeString;
+      }
+
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
+<br></tt></p></footer>
 </body>
 </html>
