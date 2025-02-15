@@ -150,6 +150,27 @@
             background: rgba(0, 0, 0, 0.8); /* Darker background for glitch effect */
         }
         
+        .device-text {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            margin-top: 0.5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+            cursor: pointer;
+        }
+        
+        .device-text .reveal {
+            display: none;
+            font-weight: bold;
+        }
+        
+        .device-text.clicked .click-to-reveal {
+            display: none;
+        }
+        
+        .device-text.clicked .reveal {
+            display: inline;
+        }
+        
         .social-icons {
             position: fixed;
             left: 1rem;
@@ -222,6 +243,10 @@
         <p>
             <span class="glitch" data-text="Made with ❤️ by Ansh">Made with ❤️ by Ansh</span>
         </p>
+        <div class="device-text" id="device-text">
+            Viewing from: <span class="click-to-reveal">Click to reveal</span>
+            <span class="reveal glitch" data-text=""></span>
+        </div>
     </footer>
     
     <script>
@@ -239,7 +264,7 @@
         camera.position.z = 5;
         
         // Create Globe (smaller size)
-        const sphereGeometry = new THREE.SphereGeometry(1.5, 32, 32); // Reduced globe size
+        const sphereGeometry = new THREE.SphereGeometry(1.2, 32, 32); // Reduced globe size
         const sphereMaterial = new THREE.MeshBasicMaterial({
             color: 0x00f3ff,
             wireframe: true,
@@ -271,7 +296,7 @@
         scene.add(particlesMesh);
         
         // Add outer glow
-        const glowGeometry = new THREE.SphereGeometry(1.6, 32, 32); // Adjusted glow size
+        const glowGeometry = new THREE.SphereGeometry(1.3, 32, 32); // Adjusted glow size
         const glowMaterial = new THREE.ShaderMaterial({
             uniforms: {
                 c: { type: "f", value: 0.5 },
@@ -324,8 +349,8 @@
             sphere.rotation.y += 0.001;
             particlesMesh.rotation.y += 0.0005;
             
-            sphere.rotation.x += mouseY * 0.3;
-            sphere.rotation.y += mouseX * 0.3;
+            sphere.rotation.x += mouseY * 0.2; // Smoother rotation
+            sphere.rotation.y += mouseX * 0.2; // Smoother rotation
             
             particlesMesh.rotation.x += mouseY * 0.1;
             particlesMesh.rotation.y += mouseX * 0.1;
@@ -340,6 +365,35 @@
         });
         
         animate();
+
+        // Device Detection
+        const deviceText = document.getElementById('device-text');
+        const clickToReveal = deviceText.querySelector('.click-to-reveal');
+        const revealText = deviceText.querySelector('.reveal');
+        const userAgent = navigator.userAgent;
+
+        let deviceName = "Unknown Device";
+
+        if (/iPhone/.test(userAgent)) {
+            deviceName = "iPhone";
+        } else if (/iPad/.test(userAgent)) {
+            deviceName = "iPad";
+        } else if (/Macintosh/.test(userAgent)) {
+            deviceName = "MacBook";
+        } else if (/Windows/.test(userAgent)) {
+            deviceName = "Windows PC";
+        } else if (/Android/.test(userAgent)) {
+            deviceName = "Android Device";
+        } else if (/Linux/.test(userAgent)) {
+            deviceName = "Linux Device";
+        }
+
+        // Click to Reveal Effect
+        deviceText.addEventListener('click', () => {
+            deviceText.classList.add('clicked');
+            revealText.setAttribute('data-text', deviceName);
+            revealText.textContent = deviceName;
+        });
     </script>
 </body>
 </html>
