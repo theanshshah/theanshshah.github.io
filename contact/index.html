@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Get In Touch</h1>
+
+        <form class="contact-form" id="contactForm">
+            <div class="input-group">
+                <i class="fas fa-user fa-bounce"></i>
+                <input type="text" id="name" required>
+                <label for="name">Your Name</label>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope fa-bounce"></i>
+                <input type="email" id="email" required>
+                <label for="email">Your Email</label>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-phone fa-bounce"></i>
+                <input type="tel" id="phone">
+                <label for="phone">Phone Number</label>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-building fa-bounce"></i>
+                <input type="text" id="company" required>
+                <label for="company">Company Name</label>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-tag fa-bounce"></i>
+                <select id="subject" required>
+                    <option value="" disabled selected>Select Subject</option>
+                    <option value="support">Support</option>
+                    <option value="sales">Sales</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="subject">Subject</label>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-comment fa-bounce"></i>
+                <textarea id="message" required></textarea>
+                <label for="message">Your Message</label>
+            </div>
+
+            <div class="input-group captcha-group">
+                <i class="fas fa-shield-alt fa-bounce"></i>
+                <label for="captcha">Math Captcha: <span id="captchaQuestion"></span></label>
+                <input type="number" id="captcha" required>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Send Message <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <div class="thank-you-message" id="thankYouMessage">
+            <div class="thank-you-content">
+                <i class="fas fa-check-circle"></i>
+                <h2>Thank You!</h2>
+                <p>Your message has been sent successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
